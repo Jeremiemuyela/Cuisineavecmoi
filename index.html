@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuisine avec moi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <a href="#" class="logo">
+        <span class="logo__icon" aria-hidden="true">🍳</span>
+        <span class="logo__text">Cuisine avec moi</span>
+      </a>
+      <nav class="nav" aria-label="Navigation principale">
+        <a href="#recettes" class="nav__link">Recettes</a>
+        <a href="#ajouter" class="nav__link">Ajouter</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Votre cuisine, simplifiée</p>
+        <h1 class="hero__title">Cuisinez avec plaisir,<br>partagez avec gourmandise</h1>
+        <p class="hero__subtitle">Découvrez des recettes maison, filtrez par catégorie et gardez vos favoris à portée de main.</p>
+        <form class="search" id="search-form" role="search">
+          <label for="search-input" class="visually-hidden">Rechercher une recette</label>
+          <input
+            type="search"
+            id="search-input"
+            class="search__input"
+            placeholder="Ex. tarte, poulet, végétarien…"
+            autocomplete="off"
+          >
+          <button type="submit" class="search__btn">Rechercher</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="filters" id="recettes" aria-label="Filtres par catégorie">
+      <div class="filters__inner">
+        <button type="button" class="filter-chip is-active" data-filter="all">Toutes</button>
+        <button type="button" class="filter-chip" data-filter="entree">Entrées</button>
+        <button type="button" class="filter-chip" data-filter="plat">Plats</button>
+        <button type="button" class="filter-chip" data-filter="dessert">Desserts</button>
+        <button type="button" class="filter-chip" data-filter="favori">Favoris</button>
+      </div>
+    </section>
+
+    <section class="recipes" aria-labelledby="recipes-heading">
+      <div class="recipes__header">
+        <h2 id="recipes-heading" class="recipes__title">Nos recettes</h2>
+        <p class="recipes__count" id="recipe-count" aria-live="polite"></p>
+      </div>
+      <div class="recipes__grid" id="recipe-grid"></div>
+      <p class="recipes__empty hidden" id="empty-state">Aucune recette ne correspond à votre recherche.</p>
+    </section>
+
+    <section class="add-recipe" id="ajouter" aria-labelledby="add-heading">
+      <div class="add-recipe__card">
+        <h2 id="add-heading" class="add-recipe__title">Ajouter une recette</h2>
+        <p class="add-recipe__hint">Partagez votre création avec la communauté.</p>
+        <form class="add-form" id="add-form">
+          <div class="form-row">
+            <label for="recipe-name">Nom</label>
+            <input type="text" id="recipe-name" name="name" required placeholder="Tarte aux pommes">
+          </div>
+          <div class="form-row form-row--half">
+            <div>
+              <label for="recipe-category">Catégorie</label>
+              <select id="recipe-category" name="category" required>
+                <option value="entree">Entrée</option>
+                <option value="plat">Plat</option>
+                <option value="dessert">Dessert</option>
+              </select>
+            </div>
+            <div>
+              <label for="recipe-time">Temps (min)</label>
+              <input type="number" id="recipe-time" name="time" min="5" max="480" value="30" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="recipe-ingredients">Ingrédients</label>
+            <textarea id="recipe-ingredients" name="ingredients" rows="4" required placeholder="Un ingrédient par ligne"></textarea>
+          </div>
+          <div class="form-row">
+            <label for="recipe-steps">Étapes</label>
+            <textarea id="recipe-steps" name="steps" rows="5" required placeholder="Une étape par ligne"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary">Enregistrer la recette</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="modal" id="recipe-modal" aria-labelledby="modal-title">
+    <article class="modal__content">
+      <button type="button" class="modal__close" id="modal-close" aria-label="Fermer">&times;</button>
+      <header class="modal__header">
+        <span class="modal__badge" id="modal-category"></span>
+        <h2 id="modal-title" class="modal__title"></h2>
+        <p class="modal__meta" id="modal-meta"></p>
+      </header>
+      <div class="modal__body">
+        <section>
+          <h3>Ingrédients</h3>
+          <ul id="modal-ingredients"></ul>
+        </section>
+        <section>
+          <h3>Préparation</h3>
+          <ol id="modal-steps"></ol>
+        </section>
+      </div>
+    </article>
+  </dialog>
+
+  <footer class="footer">
+    <p>Cuisine avec moi — recettes partagées avec amour.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
