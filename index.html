@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cuisine avec Moi, une cantine en ligne pour composer vos plats commandés avec les ingrédients de votre choix.">
+  <title>Cuisine avec Moi — composez votre plat en ligne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#accueil" aria-label="Cuisine avec Moi accueil">
+      <span class="brand-mark">Cm</span>
+      <span>Cuisine avec Moi</span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#composer">Composer</a>
+      <a href="#plats">Plats</a>
+      <a href="#archives">2023-2024</a>
+      <a class="nav-cta" href="#commande">Commander</a>
+    </nav>
+  </header>
+
+  <main id="accueil">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Cantine en ligne — interface millésime 2024</p>
+        <h1>Choisissez exactement ce que l’on met dans vos plats.</h1>
+        <p class="lead">Sélectionnez une base, ajoutez vos garnitures, sauces et préférences. Nous préparons votre commande comme à la maison, avec un suivi simple et une fiche de recette gardée dans votre panier.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#composer">Composer mon plat</a>
+          <a class="button secondary" href="#plats">Voir les classiques</a>
+        </div>
+        <ul class="trust-list" aria-label="Points forts">
+          <li>Menus inspirés des demandes clients 2023</li>
+          <li>Options végétariennes, halal et sans lactose</li>
+          <li>Livraison locale ou retrait comptoir</li>
+        </ul>
+      </div>
+      <aside class="order-card" aria-label="Aperçu de commande">
+        <span class="ticket-date">Ticket cuisine • avril 2024</span>
+        <h2>Bol du marché</h2>
+        <p>Riz parfumé, poulet citron, légumes rôtis, sauce yaourt menthe.</p>
+        <div class="mini-grid">
+          <span>Base</span><strong>Riz</strong>
+          <span>Protéine</span><strong>Poulet</strong>
+          <span>Sauce</span><strong>Menthe</strong>
+        </div>
+        <p class="price">12,90 €</p>
+      </aside>
+    </section>
+
+    <section class="section" id="composer">
+      <div class="section-heading">
+        <p class="eyebrow">Atelier commande</p>
+        <h2>Composez votre plat</h2>
+        <p>Chaque choix met à jour votre ticket. Ajoutez ou retirez les ingrédients avant de confirmer.</p>
+      </div>
+
+      <div class="builder">
+        <form class="builder-panel" id="meal-form">
+          <fieldset>
+            <legend>1. Choisissez une base</legend>
+            <label><input type="radio" name="base" value="Riz parfumé" data-price="4.5" checked> Riz parfumé</label>
+            <label><input type="radio" name="base" value="Pâtes fraîches" data-price="4.8"> Pâtes fraîches</label>
+            <label><input type="radio" name="base" value="Semoule dorée" data-price="4.2"> Semoule dorée</label>
+            <label><input type="radio" name="base" value="Salade croquante" data-price="3.9"> Salade croquante</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>2. Ajoutez une protéine</legend>
+            <label><input type="radio" name="protein" value="Poulet citron" data-price="3.6" checked> Poulet citron</label>
+            <label><input type="radio" name="protein" value="Boulettes végétales" data-price="3.4"> Boulettes végétales</label>
+            <label><input type="radio" name="protein" value="Poisson épicé" data-price="4.1"> Poisson épicé</label>
+            <label><input type="radio" name="protein" value="Œuf mollet" data-price="2.2"> Œuf mollet</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>3. Garnitures au choix</legend>
+            <label><input type="checkbox" name="extras" value="Carottes rôties" data-price="1.1" checked> Carottes rôties</label>
+            <label><input type="checkbox" name="extras" value="Champignons persillés" data-price="1.2"> Champignons persillés</label>
+            <label><input type="checkbox" name="extras" value="Oignons confits" data-price="0.9"> Oignons confits</label>
+            <label><input type="checkbox" name="extras" value="Feta émiettée" data-price="1.3"> Feta émiettée</label>
+            <label><input type="checkbox" name="extras" value="Pois chiches croustillants" data-price="1.0" checked> Pois chiches croustillants</label>
+          </fieldset>
+
+          <fieldset>
+            <legend>4. Sauce et consignes</legend>
+            <select name="sauce" aria-label="Sauce">
+              <option value="Yaourt menthe" data-price="0.8">Yaourt menthe</option>
+              <option value="Tomate fumée" data-price="0.7">Tomate fumée</option>
+              <option value="Piment doux" data-price="0.6">Piment doux</option>
+              <option value="Sans sauce" data-price="0">Sans sauce</option>
+            </select>
+            <textarea name="notes" rows="4" placeholder="Ex. sans oignons, sauce à part, cuisson bien dorée..."></textarea>
+          </fieldset>
+        </form>
+
+        <aside class="receipt" id="commande" aria-live="polite">
+          <p class="receipt-label">Votre ticket</p>
+          <h3 id="receipt-title">Plat personnalisé</h3>
+          <ul id="receipt-list"></ul>
+          <p class="note" id="receipt-note">Aucune consigne spéciale.</p>
+          <div class="receipt-total">
+            <span>Total estimé</span>
+            <strong id="receipt-total">0,00 €</strong>
+          </div>
+          <button class="button primary full" type="button">Valider la commande</button>
+          <small>Prototype de commande en ligne conservant le style visuel 2024.</small>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section dishes" id="plats">
+      <div class="section-heading">
+        <p class="eyebrow">Classiques personnalisables</p>
+        <h2>Plats prêts à modifier</h2>
+      </div>
+      <div class="cards">
+        <article class="dish-card">
+          <span>Favori 2024</span>
+          <h3>Pâtes crème champignons</h3>
+          <p>Ajoutez poulet, tofu ou légumes grillés, puis choisissez une sauce légère ou généreuse.</p>
+        </article>
+        <article class="dish-card">
+          <span>Retour 2023</span>
+          <h3>Couscous maison</h3>
+          <p>Semoule, légumes mijotés, pois chiches, merguez ou version végétale selon l’envie.</p>
+        </article>
+        <article class="dish-card">
+          <span>Menu famille</span>
+          <h3>Bol fraîcheur</h3>
+          <p>Une base froide, des crudités, une protéine et une sauce à part pour les commandes groupées.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section timeline" id="archives">
+      <div class="section-heading">
+        <p class="eyebrow">Historique volontairement daté</p>
+        <h2>Une appli qui assume son ambiance 2023-2024</h2>
+      </div>
+      <div class="timeline-list">
+        <article>
+          <time datetime="2023-09">Septembre 2023</time>
+          <p>Premiers menus participatifs : les clients votent pour les garnitures de la semaine.</p>
+        </article>
+        <article>
+          <time datetime="2024-02">Février 2024</time>
+          <p>Ajout des filtres allergènes, sauces séparées et consignes cuisine directement dans le panier.</p>
+        </article>
+        <article>
+          <time datetime="2024-06">Juin 2024</time>
+          <p>Interface stabilisée avec son look de petite cantine numérique, simple et chaleureux.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2024 Cuisine avec Moi — maquette de restaurant en ligne.</p>
+    <a href="#accueil">Retour en haut</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
